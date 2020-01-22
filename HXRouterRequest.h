@@ -24,6 +24,7 @@ typedef void(^HXServiceCompletionHandler)(id _Nullable resultData, NSError * _Nu
 @property (nonatomic, copy, readonly) NSDictionary  *nativeParameters;
 @property (nonatomic, copy, readonly) HXServiceCompletionHandler  serviceCompletionHandler;
 
+@property (nonatomic, copy, readonly) NSString  *hostAndPath;
 
 - (instancetype)initWithURLComponents:(NSURLComponents *)URLComponents
                      natvieParameters:(NSDictionary * _Nullable)natvieParameters

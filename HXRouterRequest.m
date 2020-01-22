@@ -68,4 +68,17 @@
     return _URLQueryParameters;
 }
 
+- (NSString *)hostAndPath {
+    NSString *host   = self.URLComponents.host;
+    NSString *path  = self.URLComponents.path;
+    NSMutableString *hostAndPath = [NSMutableString string];
+    if (host) {
+        [hostAndPath appendString:host];
+    }
+    if (path) {
+        [hostAndPath appendString:path];
+    }
+    return hostAndPath;
+}
+
 @end

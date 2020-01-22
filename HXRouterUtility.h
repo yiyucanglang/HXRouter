@@ -11,9 +11,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 #define HXMacroReigisterService(ServiceClass, ServiceURLString) \
-@implementation ServiceClass (HXRouter) \
+@implementation HXRouter (ServiceClass##ServiceURLString) \
 + (void)load { \
-    [[HXRouter sharedManager] registerService:self URLString:ServiceURLString]; \
+    [[HXRouter sharedManager] registerService:[ServiceClass class] URLString:ServiceURLString]; \
 }\
 \
 @end \
@@ -31,6 +31,7 @@ static NSString const * HXRouterModuelNeedModelKey   = @"model";
 static NSString const * HXRouterUserInfoKey         = @"userinfo";
 static NSString const * HXRouterClientKey           = @"client";
 static NSString const * HXRouterSubModuleIDKey       = @"submoduleid";
+static NSString const * HXRouterProtocolKey         = @"protocol";
 
 
 static NSString const * HXRouterBlockKey = @"block";

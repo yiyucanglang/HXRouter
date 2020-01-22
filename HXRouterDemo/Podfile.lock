@@ -1,0 +1,31 @@
+PODS:
+  - HXConvenientListView/Core (1.0.5):
+    - Masonry
+  - HXRouter (1.0.0)
+  - HXUIKits/HXSegmentView (0.0.7):
+    - HXConvenientListView/Core
+  - Masonry (1.1.0)
+
+DEPENDENCIES:
+  - HXRouter (from `../`)
+  - HXUIKits/HXSegmentView
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - HXConvenientListView
+    - HXUIKits
+    - Masonry
+
+EXTERNAL SOURCES:
+  HXRouter:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  HXConvenientListView: e3fe7f28f5fab78fcd37c000320e1105c0cbcf9f
+  HXRouter: 060e2d32779600689c07db33c8a2993235a3b61a
+  HXUIKits: edf53472bbafa510b05d4ca8858fe692905ed01d
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+
+PODFILE CHECKSUM: 77f9478e31f991bdc133e3be46b22bc42ea749e7
+
+COCOAPODS: 1.8.4
