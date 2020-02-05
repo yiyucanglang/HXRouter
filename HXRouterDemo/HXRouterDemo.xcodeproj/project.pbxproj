@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		08207942EB416809FB7224D3 /* libPods-HXRouterDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF5497DE95A5B1440E6E393F /* libPods-HXRouterDemo.a */; };
+		55BD82AA23EB26BE00475EEE /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BD82A923EB26BE00475EEE /* WebViewController.m */; };
 		E9A9D1DB23D7E9A0007F385F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A9D1DA23D7E9A0007F385F /* AppDelegate.m */; };
 		E9A9D1E123D7E9A0007F385F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A9D1E023D7E9A0007F385F /* ViewController.m */; };
 		E9A9D1E423D7E9A0007F385F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9A9D1E223D7E9A0007F385F /* Main.storyboard */; };
@@ -46,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		55BD82A823EB26BE00475EEE /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		55BD82A923EB26BE00475EEE /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		AF5497DE95A5B1440E6E393F /* libPods-HXRouterDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HXRouterDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1DCF648A2874AE212B8336D /* Pods-HXRouterDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HXRouterDemo.release.xcconfig"; path = "Target Support Files/Pods-HXRouterDemo/Pods-HXRouterDemo.release.xcconfig"; sourceTree = "<group>"; };
 		E9A9D1D623D7E9A0007F385F /* HXRouterDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HXRouterDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,6 +184,8 @@
 				E9A9D22823D7F64D007F385F /* PaperDetailViewController.m */,
 				E9A9D22A23D7F80A007F385F /* HXPaperHandler.h */,
 				E9A9D22B23D7F80A007F385F /* HXPaperHandler.m */,
+				55BD82A823EB26BE00475EEE /* WebViewController.h */,
+				55BD82A923EB26BE00475EEE /* WebViewController.m */,
 				E9A9D1E223D7E9A0007F385F /* Main.storyboard */,
 				E9A9D1E523D7E9A6007F385F /* Assets.xcassets */,
 				E9A9D1E723D7E9A6007F385F /* LaunchScreen.storyboard */,
@@ -365,6 +370,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9A9D21323D7F01B007F385F /* ModuleBViewController.m in Sources */,
+				55BD82AA23EB26BE00475EEE /* WebViewController.m in Sources */,
 				E9A9D21023D7F010007F385F /* ModuleAViewController.m in Sources */,
 				E9A9D22323D7F5D1007F385F /* RouterModuleBHandler.m in Sources */,
 				E9A9D1E123D7E9A0007F385F /* ViewController.m in Sources */,
@@ -549,6 +555,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G85P225WDH;
 				INFOPLIST_FILE = HXRouterDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -567,6 +574,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G85P225WDH;
 				INFOPLIST_FILE = HXRouterDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

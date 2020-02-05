@@ -10,31 +10,30 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#define HXMacroReigisterService(ServiceClass, ServiceURLString) \
-@implementation HXRouter (ServiceClass##ServiceURLString) \
+#define HXMacroReigisterService(ServiceClass, ServiceURLString, NamespaceForService) \
+@implementation HXRouter (ServiceClass##ServiceURLString##NamespaceForService) \
 + (void)load { \
-    [[HXRouter sharedManager] registerService:[ServiceClass class] URLString:ServiceURLString]; \
+    [[HXRouter sharedManager] registerService:[ServiceClass class] URLString:ServiceURLString serverNamespace:NamespaceForService]; \
 }\
 \
 @end \
 
+//You can only use this to register webservice to router
+static NSString *HXRouteWebServiceURLString = @"hxprivaterouterweb";
 
-static NSString * HXRouteURLStringSubServicePath = @"subservice";
 
-
+#pragma mark -The commonly used key
 static NSString const * HXRouterModuleTransitioningStyleKey = @"transitioningStyle";
-static NSString const * HXRouterIDKey               = @"id";
-static NSString const * HXRouterTitleKey            = @"title";
-static NSString const * HXRouterNameKey             = @"name";
-static NSString const * HXRouterCustomKey           = @"custom";
+static NSString const * HXRouterIDKey                = @"id";
+static NSString const * HXRouterTitleKey             = @"title";
+static NSString const * HXRouterNameKey              = @"name";
+static NSString const * HXRouterCustomKey            = @"custom";
 static NSString const * HXRouterModuelNeedModelKey   = @"model";
-static NSString const * HXRouterUserInfoKey         = @"userinfo";
-static NSString const * HXRouterClientKey           = @"client";
+static NSString const * HXRouterUserInfoKey          = @"userinfo";
+static NSString const * HXRouterClientKey            = @"client";
 static NSString const * HXRouterSubModuleIDKey       = @"submoduleid";
-static NSString const * HXRouterProtocolKey         = @"protocol";
-
-
-static NSString const * HXRouterBlockKey = @"block";
+static NSString const * HXRouterProtocolKey          = @"protocol";
+static NSString const * HXRouterBlockKey             = @"block";
 
 
 FOUNDATION_EXPORT NSString * const HXRouterErrorDomain;
@@ -56,7 +55,7 @@ void HXSynRunInQueue(dispatch_queue_t queue, HXRouterRun run);
 typedef NS_ENUM(NSInteger, HXRouterError) {
     
     HXRouterErrorModuleURLStringInvalid = 95273,
-    HXRouterErrorDelegateAskStopServiceSerach,
+    HXRouterErrorDelegateAskStopServiceSearch,
     HXRouterErrorModuleNoFound,
     
 };
@@ -64,7 +63,7 @@ typedef NS_ENUM(NSInteger, HXRouterError) {
 @interface NSError (HXRouterError)
 
 +(NSError *)HXRouterErrorURLStringInvalid;
-+(NSError *)HXRouterErrorDelegateAskStopServiceSerach;
++(NSError *)HXRouterServiceSearchCanceledByDelegate;
 +(NSError *)HXRouterErrorServiceNoFound;
 
 @end

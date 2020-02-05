@@ -10,7 +10,7 @@
 
 #import "HXRouteDemoServiceHeader.h"
 
-HXMacroReigisterService(LoginViewViewController, URLString_ModuleLogin)
+HXMacroReigisterService(LoginViewViewController, URLString_ModuleLogin, HXRouterNamespace_RouterDemo)
 
 @interface LoginViewViewController ()
 

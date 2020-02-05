@@ -12,7 +12,7 @@
 
 #import "HXSegmentView.h"
 
-HXMacroReigisterService(MenuViewController, URLString_ModuleMenu)
+HXMacroReigisterService(MenuViewController, URLString_ModuleMenu, HXRouterNamespace_RouterDemo)
 
 
 @interface MenuViewController ()
@@ -62,14 +62,14 @@ HXMacroReigisterService(MenuViewController, URLString_ModuleMenu)
 #pragma mark - Setter And Getter
 - (UIViewController *)fanVC {
     if (!_fanVC) {
-        _fanVC = [[HXRouter sharedManager] getServiceEntityWithURLString:URLString_ModuleFan nativeParameters:@{HXRouterTitleKey : @"我的粉丝团"}];
+        _fanVC = [[HXRouter sharedManager] getServiceEntityWithURLString:URLString_ModuleFan serverNamespace:HXRouterNamespace_RouterDemo nativeParameters:@{HXRouterTitleKey : @"我的粉丝团"}];
     }
     return _fanVC;
 }
 
 - (UIViewController *)favoutiteVC {
     if (!_favoutiteVC) {
-        _favoutiteVC = [[HXRouter sharedManager] getServiceEntityWithURLString:URLString_ModuleFavourite];
+        _favoutiteVC = [[HXRouter sharedManager] getServiceEntityWithURLString:URLString_ModuleFavourite serverNamespace:HXRouterNamespace_RouterDemo];
     }
     return _favoutiteVC;
 }

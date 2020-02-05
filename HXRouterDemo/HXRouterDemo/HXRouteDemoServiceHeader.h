@@ -11,6 +11,8 @@
 
 #import "HXRouter.h"
 
+static NSString *HXRouterNamespace_RouterDemo= @"routerdemo";
+
 #pragma mark -ModuleA
 static NSString *URLString_ModuleA = @"routerdemo://moduleA";
 static NSString *ModuleA_StudentIDKey = @"id";
@@ -40,6 +42,8 @@ static NSString *URLString_ModuleFan = @"routerdemo://moduleFan";
 static NSString *URLString_ModuleLogin = @"routerdemo://moduleLogin";
 
 #pragma mark -PaperList
+static NSString *URLString_Paper = @"routerdemo://paper";
+
 static NSString *URLString_PaperList = @"routerdemo://paper/subservice/list";
 
 

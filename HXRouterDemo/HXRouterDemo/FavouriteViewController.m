@@ -10,7 +10,7 @@
 
 #import "HXRouteDemoServiceHeader.h"
 
-HXMacroReigisterService(FavouriteViewController, URLString_ModuleFavourite)
+HXMacroReigisterService(FavouriteViewController, URLString_ModuleFavourite, HXRouterNamespace_RouterDemo)
 
 @interface FavouriteViewController ()
 

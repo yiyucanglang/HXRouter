@@ -1,7 +1,7 @@
 source 'https://github.com/CocoaPods/Specs.git'
 platform:ios, '8.0'
 target 'HXRouterDemo' do
-pod 'HXRouter', :path => '../'
+pod 'DHXRouter', :path => '../'
 pod 'HXUIKits/HXSegmentView'
 end
 

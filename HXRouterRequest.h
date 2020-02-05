@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 typedef void(^HXServiceCompletionHandler)(id _Nullable resultData, NSError * _Nullable error, NSDictionary * _Nullable userInfo);
 
 @interface HXRouterRequest : NSObject
+@property (nonatomic, copy, readonly) NSString *URLString;
+@property (nonatomic, copy, readonly) NSString *parseredURLString;
 @property (nonatomic, copy, readonly) NSURLComponents  *URLComponents;
 
 @property (nonatomic, copy, readonly) Class targetViewControllerClass;
@@ -26,14 +28,18 @@ typedef void(^HXServiceCompletionHandler)(id _Nullable resultData, NSError * _Nu
 
 @property (nonatomic, copy, readonly) NSString  *hostAndPath;
 
-- (instancetype)initWithURLComponents:(NSURLComponents *)URLComponents
-                     natvieParameters:(NSDictionary * _Nullable)natvieParameters
-        serviceCompletionHandler:(HXServiceCompletionHandler _Nullable)serviceCompletionHandler;
+- (instancetype)initWithURLString:(NSString *)URLString
+                parseredURLString:(NSString *)parseredURLString
+                    URLComponents:(NSURLComponents * _Nullable)URLComponents
+                 natvieParameters:(NSDictionary * _Nullable)natvieParameters
+         serviceCompletionHandler:(HXServiceCompletionHandler _Nullable)serviceCompletionHandler;
 
-- (instancetype)initWithURLComponents:(NSURLComponents *)URLComponents
-                     natvieParameters:(NSDictionary * _Nullable)natvieParameters
-            targetViewControllerClass:(Class _Nullable)targetViewControllerClass
-        serviceCompletionHandler:(HXServiceCompletionHandler _Nullable)serviceCompletionHandler;
+- (instancetype)initWithURLString:(NSString *)URLString
+                parseredURLString:(NSString *)parseredURLString
+                    URLComponents:(NSURLComponents * _Nullable)URLComponents
+                 natvieParameters:(NSDictionary * _Nullable)natvieParameters
+        targetViewControllerClass:(Class _Nullable)targetViewControllerClass
+         serviceCompletionHandler:(HXServiceCompletionHandler _Nullable)serviceCompletionHandler;
 
 - (void)serviceCompletionHandlerWithResult:(id _Nullable)result
                                 error:(NSError * _Nullable)error

@@ -13,7 +13,7 @@
 #import "PaperListViewController.h"
 #import "PaperDetailViewController.h"
 
-HXMacroReigisterService(HXPaperHandler, URLString_PaperList)
+HXMacroReigisterService(HXPaperHandler, URLString_Paper, HXRouterNamespace_RouterDemo)
 
 @implementation HXPaperHandler
 

@@ -48,8 +48,8 @@ NSString * const HXRouterErrorDomain = @"com.hxrouter.error";
     return  [self HXRouterErrorWithCode:HXRouterErrorModuleURLStringInvalid message:@" The URLString for the service is invalid。 if url contains illegal characters you must convert it user URLQueryAllowedCharacterSet"];
 }
 
-+ (NSError *)HXRouterErrorDelegateAskStopServiceSerach {
-    return  [self HXRouterErrorWithCode:HXRouterErrorDelegateAskStopServiceSerach message:@" The route's delegate ask to stop service search"];
++ (NSError *)HXRouterServiceSearchCanceledByDelegate {
+    return  [self HXRouterErrorWithCode:HXRouterErrorDelegateAskStopServiceSearch message:@" The route's delegate cancel service search"];
 }
 
 + (NSError *)HXRouterErrorServiceNoFound {

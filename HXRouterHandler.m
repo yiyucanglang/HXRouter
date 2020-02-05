@@ -52,7 +52,7 @@
         ![clientViewController isKindOfClass:[UIViewController class]] ||
         ![serviceViewController isKindOfClass:[UIViewController class]]
         ) {
-        NSError *error = [NSError errorWithDomain:HXRouterErrorDomain code:96273 userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"Default handle request logic can't execute because client or service may not available please check", nil) }];
+        NSError *error = [NSError errorWithDomain:HXRouterErrorDomain code:96273 userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The default logic for handling routing requests can't execute because client or service may not available object(UIViewController) please check or register the custom handler", nil) }];
         [request serviceCompletionHandlerWithResult:nil error:error userInfo:nil];
         return;
     }

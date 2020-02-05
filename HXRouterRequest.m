@@ -9,7 +9,8 @@
 #import "HXRouterRequest.h"
 
 @interface HXRouterRequest()
-
+@property (nonatomic, copy) NSString *URLString;
+@property (nonatomic, copy) NSString *parseredURLString;
 @property (nonatomic, copy) Class targetViewControllerClass;
 @property (nonatomic, copy) NSURLComponents  *URLComponents;
 @property (nonatomic, copy) NSDictionary  *URLQueryParameters;
@@ -19,13 +20,15 @@
 @end
 
 @implementation HXRouterRequest
-- (instancetype)initWithURLComponents:(NSURLComponents *)URLComponents natvieParameters:(NSDictionary *)natvieParameters serviceCompletionHandler:(HXServiceCompletionHandler)serviceCompletionHandler {
-    return [self initWithURLComponents:URLComponents natvieParameters:natvieParameters targetViewControllerClass:nil serviceCompletionHandler:serviceCompletionHandler];
+- (instancetype)initWithURLString:(NSString *)URLString parseredURLString:(nonnull NSString *)parseredURLString URLComponents:(NSURLComponents * _Nullable)URLComponents natvieParameters:(NSDictionary * _Nullable)natvieParameters serviceCompletionHandler:(HXServiceCompletionHandler _Nullable)serviceCompletionHandler {
+    return [self initWithURLString:URLString parseredURLString:parseredURLString URLComponents:URLComponents natvieParameters:natvieParameters targetViewControllerClass:nil serviceCompletionHandler:serviceCompletionHandler];
 }
 
-- (instancetype)initWithURLComponents:(NSURLComponents *)URLComponents natvieParameters:(NSDictionary *)natvieParameters targetViewControllerClass:(Class)targetViewControllerClass serviceCompletionHandler:(HXServiceCompletionHandler)serviceCompletionHandler {
+- (instancetype)initWithURLString:(NSString *)URLString parseredURLString:(nonnull NSString *)parseredURLString URLComponents:(NSURLComponents * _Nullable)URLComponents natvieParameters:(NSDictionary * _Nullable)natvieParameters targetViewControllerClass:(Class  _Nullable __unsafe_unretained)targetViewControllerClass serviceCompletionHandler:(HXServiceCompletionHandler _Nullable)serviceCompletionHandler {
     
     if (self = [super init]) {
+        self.URLString = URLString;
+        self.parseredURLString = parseredURLString;
         self.targetViewControllerClass = targetViewControllerClass;
         self.URLComponents = URLComponents;
         self.nativeParameters = natvieParameters;

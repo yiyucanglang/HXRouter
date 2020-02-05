@@ -10,7 +10,7 @@
 
 #import "HXRouteDemoServiceHeader.h"
 
-HXMacroReigisterService(ModuleAViewController, URLString_ModuleA)
+HXMacroReigisterService(ModuleAViewController, URLString_ModuleA, HXRouterNamespace_RouterDemo)
 
 @interface ModuleAViewController ()
 

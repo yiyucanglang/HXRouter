@@ -13,13 +13,11 @@
 
 static NSString * HXRoutePrivateFullPathKey = @"HXRoutePrivateFullPathKey";
 
+
 @interface HXRouter()
 
 @property (nonatomic, strong) NSMutableDictionary  *routeDic;
-@property (nonatomic, strong) NSMutableDictionary  *fullPathDic;
-
-@property (nonatomic, strong) id  webService;
-
+@property (nonatomic, strong) NSMutableDictionary *delegateDic;
 @property (nonatomic, strong) dispatch_queue_t  routerSerialQueue;
 @end
 
@@ -40,134 +38,146 @@ static NSString * HXRoutePrivateFullPathKey = @"HXRoutePrivateFullPathKey";
 #pragma mark - System Method
 
 #pragma mark - Public Method
-- (void)registerService:(id)service URLString:(NSString *)URLString {
+- (void)registerService:(id)service URLString:(NSString *)URLString serverNamespace:(NSString *)serverNamespace {
     HXSynRunInQueue(self.routerSerialQueue, ^{
-        
-        if (!URLString.length) {
+        if (!URLString.length ||
+            !service ||
+            !serverNamespace.length ||
+            !object_isClass(service)) {
             return;
         }
 
-        if (!object_isClass(service)) {
-            return;
-        }
-        
-        
         NSURL *url = [NSURL URLWithString:URLString];
-        if (service && url) {
-            
-            NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:url resolvingAgainstBaseURL:YES];
-            
-            NSString *scheme = urlComponents.scheme;
-            NSString *host   = urlComponents.host;
-            NSString *path  = urlComponents.path;
-            NSMutableString *hostAndPath = [NSMutableString string];
-            
-            if (!scheme.length) {
-                self.fullPathDic[URLString] = service;
-                return;
-            }
-            
-            if (host) {
-                [hostAndPath appendString:host];
-            }
-            if (path) {
-                [hostAndPath appendString:path];
-            }
-            
-            
-            NSMutableDictionary *schemeDic = self.routeDic[scheme];
-            if (!schemeDic) {
-                schemeDic = [NSMutableDictionary dictionary];
-                self.routeDic[scheme] = schemeDic;
-            }
-            
-            if ([path containsString:HXRouteURLStringSubServicePath]) {//子服务
-                if (host.length && !schemeDic[host]) {
-                    schemeDic[host] = service;
-                    return;
-                }
-                
-            }
-            
-            if (hostAndPath.length) {
-                schemeDic[hostAndPath] = service;
-            }
-        
+        if (!url) {
+             NSString *desc = [NSString stringWithFormat:@"An error occurred. URLString can't convert to NSURL object!(service:%@ URLString:%@ serverNamespace:%@)", service, URLString, serverNamespace];
+             NSAssert(0, desc);
+             return;
         }
         
-    });
-}
-
-- (void)registerWebService:(id)service {
-    HXSynRunInQueue(self.routerSerialQueue, ^{
+        NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:url resolvingAgainstBaseURL:YES];
+        NSString *scheme = urlComponents.scheme.length > 0 ? urlComponents.scheme : @"";
+        NSString *host   = urlComponents.host.length > 0 ? urlComponents.host : @"";
+        NSString *path  = urlComponents.path.length > 0 ? urlComponents.path : @"";
+        NSString *hostAndPath = [NSString stringWithFormat:@"%@%@", host, path];
         
-        if (!object_isClass(service)) {
+        NSMutableDictionary *serverNamespaceDic = self.routeDic[serverNamespace];
+        if (!serverNamespaceDic) {
+            serverNamespaceDic = [NSMutableDictionary dictionary];
+            self.routeDic[serverNamespace] = serverNamespaceDic;
+        }
+        
+        
+        if (!scheme.length && hostAndPath.length) {// fullpath
+            NSMutableDictionary *fullPathDic = serverNamespaceDic[HXRoutePrivateFullPathKey];
+            if (!fullPathDic) {
+                fullPathDic = [NSMutableDictionary dictionary];
+                serverNamespaceDic[HXRoutePrivateFullPathKey] = fullPathDic;
+            }
+            
+            fullPathDic[hostAndPath] = service;
             return;
         }
         
-        if (!self.webService) {
-            self.webService = service;
+        
+        if (!hostAndPath.length) {
+            NSString *desc = [NSString stringWithFormat:@"An error occurred. URLString must have host. (service:%@ URLString:%@ serverNamespace:%@) ps:For example, in the URL http://www.example.com/index.html, the host is www.example.com.", service, URLString, serverNamespace];
+            NSAssert(0, desc);
+            return;
         }
+        
+        
+        NSMutableDictionary *schemeDic = serverNamespaceDic[scheme];
+        if (!schemeDic) {
+            schemeDic = [NSMutableDictionary dictionary];
+            serverNamespaceDic[scheme] = schemeDic;
+        }
+        
+        if (host.length && !path.length) {
+            schemeDic[host] = service;
+            return;
+        }
+        
+        schemeDic[hostAndPath] = service;
+        
     });
 }
 
 #pragma mark -
-- (BOOL)canHandlerURLString:(NSString *)URLString {
+- (BOOL)canHandlerURLString:(NSString *)URLString serverNamespace:(nonnull NSString *)serverNamespace {
     
     __block BOOL canHandle = NO;
     HXSynRunInQueue(self.routerSerialQueue, ^{
-       
-        if (!URLString.length) {
+        
+        if (!URLString.length ||
+            !serverNamespace.length) {
             canHandle = NO;
             return;
         }
         
-        if ([URLString hasPrefix:@"http"] || [URLString hasPrefix:@"https"]) {
-            if (self.webService) {
+        id<HXRouterDelegate> delegate = self.delegateDic[serverNamespace];
+        BOOL delegateCanHandle = YES;
+        if ([delegate respondsToSelector:@selector(canHandleURLString:)]) {
+            delegateCanHandle = [delegate canHandleURLString:URLString];
+        }
+        if (!delegateCanHandle) {
+            return;
+        }
+        
+        if ([delegate respondsToSelector:@selector(handlerForURLString:)] && [delegate handlerForURLString:URLString]) {
+            canHandle = YES;
+            return;
+        }
+        
+        
+        NSString *parseredURLString = URLString;
+        if ([delegate respondsToSelector:@selector(parserURLString:)]) {
+            parseredURLString = [delegate parserURLString:URLString];
+        }
+        
+        
+        NSMutableDictionary *serverNamespaceDic = self.routeDic[serverNamespace];
+        NSMutableDictionary *fullPathDic = serverNamespaceDic[HXRoutePrivateFullPathKey];
+        
+        if ([parseredURLString hasPrefix:@"http"]) {
+            if (fullPathDic[HXRouteWebServiceURLString]) {
                 canHandle = YES;
             }
             return;
         }
         
-        NSURL *url = [NSURL URLWithString:URLString];
+        NSURL *url = [NSURL URLWithString:parseredURLString];
         if (!url) {
             return;
         }
         
         NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:url resolvingAgainstBaseURL:YES];
+        NSString *scheme = urlComponents.scheme.length > 0 ? urlComponents.scheme : @"";
+        NSString *host   = urlComponents.host.length > 0 ? urlComponents.host : @"";
+        NSString *path  = urlComponents.path.length > 0 ? urlComponents.path : @"";
+        NSString *hostAndPath = [NSString stringWithFormat:@"%@%@", host, path];
         
-        NSString *scheme = urlComponents.scheme;
-        NSString *host   = urlComponents.host;
-        NSString *path  = urlComponents.path;
-        NSMutableString *hostAndPath = [NSMutableString string];
-        
-        if (!scheme.length) {
-            if (self.fullPathDic[URLString]) {
+        if (!scheme.length && hostAndPath.length) {//fullpath
+            if (fullPathDic[hostAndPath]) {
                 canHandle = YES;
             }
             return;
         }
         
-        if (host) {
-            [hostAndPath appendString:host];
-        }
-        if (path) {
-            [hostAndPath appendString:path];
+        if (!hostAndPath.length) {
+            return;
         }
         
-        NSMutableDictionary *schemeDic = self.routeDic[scheme];
-        
-        if ([path containsString:HXRouteURLStringSubServicePath]) {//子模块
-            if (schemeDic[host]) {
-                canHandle = YES;
-                return;
-            }
-            
-        }
+        NSMutableDictionary *schemeDic = serverNamespaceDic[scheme];
         
         if (schemeDic[hostAndPath]) {
             canHandle = YES;
+            return;
         }
+        
+        if (schemeDic[host]) {
+            canHandle = YES;
+        }
+        
         
     });
     
@@ -175,71 +185,89 @@ static NSString * HXRoutePrivateFullPathKey = @"HXRoutePrivateFullPathKey";
 }
 
 #pragma mark -
-- (id)getServiceEntityWithURLString:(NSString *)URLString {
-    return [self getServiceEntityWithURLString:URLString nativeParameters:nil];
+- (id)getServiceEntityWithURLString:(NSString *)URLString serverNamespace:(nonnull NSString *)serverNamespace {
+    return [self getServiceEntityWithURLString:URLString serverNamespace:serverNamespace nativeParameters:nil];
 }
 
-- (id)getServiceEntityWithURLString:(NSString *)URLString nativeParameters:(NSDictionary *)nativeParameters {
-    return [self getServiceEntityWithURLString:URLString nativeParameters:nativeParameters serviceCompletionHandler:nil];
+- (id)getServiceEntityWithURLString:(NSString *)URLString serverNamespace:(nonnull NSString *)serverNamespace nativeParameters:(NSDictionary * _Nullable)nativeParameters {
+    return [self getServiceEntityWithURLString:URLString serverNamespace:serverNamespace nativeParameters:nativeParameters serviceCompletionHandler:nil];
 }
 
-- (id)getServiceEntityWithURLString:(NSString *)URLString nativeParameters:(NSDictionary *)nativeParameters serviceCompletionHandler:(HXServiceCompletionHandler)serviceCompletionHandler {
+- (id)getServiceEntityWithURLString:(NSString *)URLString serverNamespace:(nonnull NSString *)serverNamespace nativeParameters:(NSDictionary * _Nullable)nativeParameters serviceCompletionHandler:(HXServiceCompletionHandler _Nullable)serviceCompletionHandler {
     
     __block id service;
     __block NSURLComponents *outerURLComponents;
+    __block NSString *parseredURLString = URLString;
+    __block id<HXRouterDelegate> delegate = self.delegateDic[serverNamespace];
     HXSynRunInQueue(self.routerSerialQueue, ^{
         
-        if (!URLString.length) {
+        if (!URLString.length ||
+            !serverNamespace.length) {
             return;
         }
         
-        if ([URLString hasPrefix:@"http"] || [URLString hasPrefix:@"https"]) {
-            if (self.webService) {
-                service = self.webService;
+        
+        BOOL delegateCanHandle = YES;
+        if ([delegate respondsToSelector:@selector(canHandleURLString:)]) {
+            delegateCanHandle = [delegate canHandleURLString:URLString];
+        }
+        if (!delegateCanHandle) {
+            return;
+        }
+        
+        if ([delegate respondsToSelector:@selector(handlerForURLString:)]) {//delegate take over
+            service = [delegate handlerForURLString:URLString];
+            if (service) {
+                return;
             }
+        }
+        
+        
+        if ([delegate respondsToSelector:@selector(parserURLString:)]) {
+            parseredURLString = [delegate parserURLString:URLString];
+        }
+        
+        
+        NSMutableDictionary *serverNamespaceDic = self.routeDic[serverNamespace];
+        NSMutableDictionary *fullPathDic = serverNamespaceDic[HXRoutePrivateFullPathKey];
+        
+        if ([parseredURLString hasPrefix:@"http"]) {
+            service = fullPathDic[HXRouteWebServiceURLString];
             return;
         }
         
-        NSURL *url = [NSURL URLWithString:URLString];
+        
+        
+        NSURL *url = [NSURL URLWithString:parseredURLString];
         if (!url) {
             return;
         }
         
         NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:url resolvingAgainstBaseURL:YES];
-        outerURLComponents = urlComponents;
+        NSString *scheme = urlComponents.scheme.length > 0 ? urlComponents.scheme : @"";
+        NSString *host   = urlComponents.host.length > 0 ? urlComponents.host : @"";
+        NSString *path  = urlComponents.path.length > 0 ? urlComponents.path : @"";
+        NSString *hostAndPath = [NSString stringWithFormat:@"%@%@", host, path];
         
-        NSString *scheme = urlComponents.scheme;
-        NSString *host   = urlComponents.host;
-        NSString *path  = urlComponents.path;
-        NSMutableString *hostAndPath = [NSMutableString string];
-        
-        if (!scheme.length) {
-            if (self.fullPathDic[URLString]) {
-                service = self.fullPathDic[URLString];
-            }
+        if (!scheme.length && hostAndPath.length) {
+            service = fullPathDic[hostAndPath];
             return;
         }
         
-        if (host) {
-            [hostAndPath appendString:host];
-        }
-        if (path) {
-            [hostAndPath appendString:path];
+        if (!hostAndPath.length) {
+            return;
         }
         
-        NSMutableDictionary *schemeDic = self.routeDic[scheme];
         
-        if ([path containsString:HXRouteURLStringSubServicePath]) {//子模块
-            if (schemeDic[host]) {
-                service = schemeDic[host];
-                return;
-            }
-            
+        NSMutableDictionary *schemeDic = serverNamespaceDic[scheme];
+        
+        service = schemeDic[hostAndPath];
+        if (service) {
+            return;
         }
         
-        if (schemeDic[hostAndPath]) {
-            service = schemeDic[hostAndPath];
-        }
+        service = schemeDic[host];
+        
     });
     
     if (!service) {
@@ -252,103 +280,138 @@ static NSString * HXRoutePrivateFullPathKey = @"HXRoutePrivateFullPathKey";
     if([[service class] isSubclassOfClass:[UIViewController class]]) {
         
         handler = [[HXRouterHandler alloc] init];
-        if ([self.delegate defaultRouterHandler]) {
-            id newHandler = [self.delegate defaultRouterHandler];
+        if ([delegate respondsToSelector:@selector(defaultRouterHandler)]) {
+            id newHandler = [delegate defaultRouterHandler];
             handler = [[newHandler alloc] init];
         }
         
-        request = [[HXRouterRequest alloc] initWithURLComponents:outerURLComponents natvieParameters:nativeParameters targetViewControllerClass:service serviceCompletionHandler:serviceCompletionHandler];
+        request = [[HXRouterRequest alloc] initWithURLString:URLString parseredURLString:parseredURLString URLComponents:outerURLComponents natvieParameters:nativeParameters targetViewControllerClass:service serviceCompletionHandler:serviceCompletionHandler];
     }
     else {
-        if ([service respondsToSelector:@selector(alloc)]) {
+        if (object_isClass(service)) {
             handler = [[service alloc] init];
         }
-        request = [[HXRouterRequest alloc] initWithURLComponents:outerURLComponents natvieParameters:nativeParameters serviceCompletionHandler:serviceCompletionHandler];
+        else {
+            handler = service;
+        }
+        request = [[HXRouterRequest alloc] initWithURLString:URLString parseredURLString:parseredURLString URLComponents:outerURLComponents natvieParameters:nativeParameters serviceCompletionHandler:serviceCompletionHandler];
     }
+    
+    NSError *error;
+    if (![handler shouldHandleWithRequest:request error:&error]) {
+        [request serviceCompletionHandlerWithResult:nil error:error userInfo:nil];
+        return nil;
+    }
+    
     return [handler serviceWithRequest:request];
 }
 
 #pragma mark -
-- (void)handleURLString:(NSString *)URLString {
-    [self handleURLString:URLString nativeParameters:nil];
+- (void)handleURLString:(NSString *)URLString serverNamespace:(nonnull NSString *)serverNamespace{
+    [self handleURLString:URLString serverNamespace:serverNamespace nativeParameters:nil];
 }
 
-- (void)handleURLString:(NSString *)URLString nativeParameters:(NSDictionary *)nativeParameters {
-    [self handleURLString:URLString nativeParameters:nativeParameters serviceCompletionHandler:nil];
+- (void)handleURLString:(NSString *)URLString serverNamespace:(nonnull NSString *)serverNamespace nativeParameters:(NSDictionary * _Nullable)nativeParameters {
+    [self handleURLString:URLString serverNamespace:serverNamespace nativeParameters:nativeParameters serviceCompletionHandler:nil];
 }
 
-- (void)handleURLString:(NSString *)URLString nativeParameters:(NSDictionary *)nativeParameters serviceCompletionHandler:(HXServiceCompletionHandler)serviceCompletionHandler {
-    [self handleURLString:URLString nativeParameters:nativeParameters serviceCompletionHandler:serviceCompletionHandler routerSearchCompletion:nil];
+- (void)handleURLString:(NSString *)URLString serverNamespace:(nonnull NSString *)serverNamespace nativeParameters:(NSDictionary * _Nullable)nativeParameters serviceCompletionHandler:(HXServiceCompletionHandler _Nullable)serviceCompletionHandler {
+    [self handleURLString:URLString serverNamespace:serverNamespace nativeParameters:nativeParameters serviceCompletionHandler:serviceCompletionHandler routerSearchCompletion:nil];
 }
 
-- (void)handleURLString:(NSString *)URLString nativeParameters:(NSDictionary *)nativeParameters serviceCompletionHandler:(HXServiceCompletionHandler)serviceCompletionHandler routerSearchCompletion:(HXRouterSearchCompletion)routerSearchCompletion {
+- (void)handleURLString:(NSString *)URLString serverNamespace:(NSString *)serverNamespace nativeParameters:(NSDictionary *)nativeParameters serviceCompletionHandler:(HXServiceCompletionHandler)serviceCompletionHandler routerSearchCompletion:(HXRouterSearchCompletion)routerSearchCompletion {
    
     HXSynRunInQueue(self.routerSerialQueue, ^{
             
-        if (!URLString.length) {
-            [self _routerSearchCompletion:routerSearchCompletion error:[NSError HXRouterErrorURLStringInvalid] userInfo:nil];
+        if (!URLString.length ||
+            !serverNamespace.length) {
+            NSAssert(0, @"An error occurred. URLString or serverNamespace may be nil");
             return;
         }
         
-        NSString *parserURLString = URLString;
-        if ([self.delegate respondsToSelector:@selector(parserURLString:)]) {
-            parserURLString = [self.delegate parserURLString:URLString];
-        }
+        id searchedService = nil;
         
-        if ([self.delegate respondsToSelector:@selector(shouldStopServiceSearchForURLString:)]) {
-            [self _routerSearchCompletion:routerSearchCompletion error:[NSError HXRouterErrorDelegateAskStopServiceSerach] userInfo:nil];
+        id<HXRouterDelegate> delegate = self.delegateDic[serverNamespace];
+        
+        BOOL delegateCanHandle = YES;
+        if ([delegate respondsToSelector:@selector(canHandleURLString:)]) {
+            delegateCanHandle = [delegate canHandleURLString:URLString];
+        }
+        if (!delegateCanHandle) {
+            [self _routerSearchCompletion:routerSearchCompletion error:[NSError HXRouterServiceSearchCanceledByDelegate] userInfo:nil];
             return;
         }
         
         
-        NSURL *url = [NSURL URLWithString:parserURLString];
+        if ([delegate respondsToSelector:@selector(handlerForURLString:)]) {//delegate take over
+           searchedService = [delegate handlerForURLString:URLString];
+           if (searchedService) {
+                [self _searchedService:searchedService URLString:URLString URLComponents:nil nativeParameters:nativeParameters serviceCompletionHandler:serviceCompletionHandler routerSearchCompletion:routerSearchCompletion delegate:delegate];
+                return;
+           }
+        }
+        
+        
+        NSString *parseredURLString = URLString;
+        if ([delegate respondsToSelector:@selector(parserURLString:)]) {
+            parseredURLString = [delegate parserURLString:URLString];
+        }
+        
+        NSMutableDictionary *serverNamespaceDic = self.routeDic[serverNamespace];
+        NSMutableDictionary *fullPathDic = serverNamespaceDic[HXRoutePrivateFullPathKey];
+        
+        if ([parseredURLString hasPrefix:@"http"]) {
+            searchedService = fullPathDic[HXRouteWebServiceURLString];
+            [self _searchedService:searchedService URLString:URLString URLComponents:nil nativeParameters:nativeParameters serviceCompletionHandler:serviceCompletionHandler routerSearchCompletion:routerSearchCompletion delegate:delegate];
+            return;
+        }
+        
+        
+        NSURL *url = [NSURL URLWithString:parseredURLString];
         if (!url) {
             [self _routerSearchCompletion:routerSearchCompletion error:[NSError HXRouterErrorURLStringInvalid] userInfo:nil];
             return;
         }
         
         NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:url resolvingAgainstBaseURL:YES];
+        NSString *scheme = urlComponents.scheme.length > 0 ? urlComponents.scheme : @"";
+        NSString *host   = urlComponents.host.length > 0 ? urlComponents.host : @"";
+        NSString *path  = urlComponents.path.length > 0 ? urlComponents.path : @"";
+        NSString *hostAndPath = [NSString stringWithFormat:@"%@%@", host, path];
         
-        id searchedService = nil;
-        if ([URLString hasPrefix:@"http"] || [URLString hasPrefix:@"https"]) {
-            searchedService = self.webService;
-            [self _searchedService:searchedService URLComponents:urlComponents nativeParameters:nativeParameters serviceCompletionHandler:serviceCompletionHandler routerSearchCompletion:routerSearchCompletion];
+        if (!scheme.length && hostAndPath.length) {
+            searchedService = fullPathDic[hostAndPath];
+            [self _searchedService:searchedService URLString:URLString URLComponents:urlComponents nativeParameters:nativeParameters serviceCompletionHandler:serviceCompletionHandler routerSearchCompletion:routerSearchCompletion delegate:delegate];
             return;
         }
         
-        NSString *scheme = urlComponents.scheme;
-        NSString *host   = urlComponents.host;
-        NSString *path  = urlComponents.path;
-        NSMutableString *hostAndPath = [NSMutableString string];
-        
-        if (!scheme.length) {
-            searchedService = self.fullPathDic[URLString];
-            [self _searchedService:searchedService URLComponents:urlComponents nativeParameters:nativeParameters serviceCompletionHandler:serviceCompletionHandler routerSearchCompletion:routerSearchCompletion];
+        if (!hostAndPath.length) {
+            [self _routerSearchCompletion:routerSearchCompletion error:[NSError HXRouterErrorServiceNoFound] userInfo:nil];
             return;
         }
         
-        if (host) {
-            [hostAndPath appendString:host];
-        }
-        if (path) {
-            [hostAndPath appendString:path];
-        }
         
-        NSMutableDictionary *schemeDic = self.routeDic[scheme];
-        
-        if ([path containsString:HXRouteURLStringSubServicePath]) {//子服务
-            searchedService = schemeDic[host];
-            [self _searchedService:searchedService URLComponents:urlComponents nativeParameters:nativeParameters serviceCompletionHandler:serviceCompletionHandler routerSearchCompletion:routerSearchCompletion];
-            return;
-            
-        }
+        NSMutableDictionary *schemeDic = serverNamespaceDic[scheme];
         
         searchedService = schemeDic[hostAndPath];
-        [self _searchedService:searchedService URLComponents:urlComponents nativeParameters:nativeParameters serviceCompletionHandler:serviceCompletionHandler routerSearchCompletion:routerSearchCompletion];
+        if (!searchedService) {
+            searchedService = schemeDic[host];
+        }
+        
+        [self _searchedService:searchedService URLString:URLString URLComponents:urlComponents nativeParameters:nativeParameters serviceCompletionHandler:serviceCompletionHandler routerSearchCompletion:routerSearchCompletion delegate:delegate];
+        
     });
     
 }
 
+- (void)setRouterDelegate:(id<HXRouterDelegate>)delegate serverNamespace:(NSString *)serverNamespace {
+    HXAsyncRunInMain(^{
+        if (!serverNamespace.length) {
+            return;
+        }
+        self.delegateDic[serverNamespace] = delegate;
+    });
+}
 
 
 #pragma mark - Private Method
@@ -360,7 +423,13 @@ static NSString * HXRoutePrivateFullPathKey = @"HXRoutePrivateFullPathKey";
     });
 }
 
-- (void)_searchedService:(id)service URLComponents:(NSURLComponents *)URLComponents nativeParameters:(NSDictionary *)nativeParameters serviceCompletionHandler:(HXServiceCompletionHandler)serviceCompletionHandler routerSearchCompletion:(HXRouterSearchCompletion)routerSearchCompletion {
+- (void)_searchedService:(id)service
+               URLString:(NSString *)URLString
+           URLComponents:(NSURLComponents *)URLComponents
+        nativeParameters:(NSDictionary *)nativeParameters
+serviceCompletionHandler:(HXServiceCompletionHandler)serviceCompletionHandler
+  routerSearchCompletion:(HXRouterSearchCompletion)routerSearchCompletion
+                delegate:(id<HXRouterDelegate>)delegate {
     
     if (!service) {
         [self _routerSearchCompletion:routerSearchCompletion error:[NSError HXRouterErrorServiceNoFound] userInfo:nil];
@@ -371,22 +440,30 @@ static NSString * HXRoutePrivateFullPathKey = @"HXRoutePrivateFullPathKey";
         HXRouterRequest *request;
         HXRouterHandler *handler;
         
+        NSString *parseredURLString = URLString;
+        if ([delegate respondsToSelector:@selector(parserURLString:)]) {
+            parseredURLString = [delegate parserURLString:URLString];
+        }
+        
         if([[service class] isSubclassOfClass:[UIViewController class]]) {
             
             handler = [[HXRouterHandler alloc] init];
-            if ([self.delegate defaultRouterHandler]) {
-                id newHandler = [self.delegate defaultRouterHandler];
+            if ([delegate respondsToSelector:@selector(defaultRouterHandler)]) {
+                id newHandler = [delegate defaultRouterHandler];
                 handler = [[newHandler alloc] init];
             }
             
-            
-            request = [[HXRouterRequest alloc] initWithURLComponents:URLComponents natvieParameters:nativeParameters targetViewControllerClass:service serviceCompletionHandler:serviceCompletionHandler];
+            request = [[HXRouterRequest alloc] initWithURLString:URLString parseredURLString:parseredURLString URLComponents:URLComponents natvieParameters:nativeParameters targetViewControllerClass:service serviceCompletionHandler:serviceCompletionHandler];
         }
         else {
-            if ([service respondsToSelector:@selector(alloc)]) {
+            
+            if (object_isClass(service)) {
                 handler = [[service alloc] init];
             }
-            request = [[HXRouterRequest alloc] initWithURLComponents:URLComponents natvieParameters:nativeParameters serviceCompletionHandler:serviceCompletionHandler];
+            else {
+                handler = service;
+            }
+            request = [[HXRouterRequest alloc] initWithURLString:URLString parseredURLString:parseredURLString URLComponents:URLComponents natvieParameters:nativeParameters serviceCompletionHandler:serviceCompletionHandler];
         }
         
         NSError *error;
@@ -410,11 +487,11 @@ static NSString * HXRoutePrivateFullPathKey = @"HXRoutePrivateFullPathKey";
     return _routeDic;
 }
 
-- (NSMutableDictionary *)fullPathDic {
-    if (!_fullPathDic) {
-        _fullPathDic = [[NSMutableDictionary alloc] init];
+- (NSMutableDictionary *)delegateDic {
+    if (!_delegateDic) {
+        _delegateDic = [[NSMutableDictionary alloc] init];
     }
-    return _fullPathDic;
+    return _delegateDic;
 }
 
 - (dispatch_queue_t)routerSerialQueue {

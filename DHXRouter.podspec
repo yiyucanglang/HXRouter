@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name             = 'HXRouter'
+  s.name             = 'DHXRouter'
   s.version          = '1.0.0'
   s.summary          = 'An easy-to-use routing component for iOS'
 

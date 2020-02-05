@@ -12,14 +12,14 @@
 
 #import "ModuleBViewController.h"
 
-HXMacroReigisterService(RouterModuleBHandler, URLString_ModuleB)
+HXMacroReigisterService(RouterModuleBHandler, URLString_ModuleB, HXRouterNamespace_RouterDemo)
 
 @implementation RouterModuleBHandler
 
 - (BOOL)shouldHandleWithRequest:(HXRouterRequest *)request error:(NSError *__autoreleasing  _Nullable *)error {
     
     //Simulate modueB requires login firstly
-    [[HXRouter sharedManager] handleURLString:URLString_ModuleLogin nativeParameters:@{HXRouterModuleTransitioningStyleKey : @(HXModuleTransitioningStyle_Presenting)} serviceCompletionHandler:^(id  _Nullable resultData, NSError * _Nullable error, NSDictionary * _Nullable userInfo) {
+    [[HXRouter sharedManager] handleURLString:URLString_ModuleLogin serverNamespace:HXRouterNamespace_RouterDemo nativeParameters:@{HXRouterModuleTransitioningStyleKey : @(HXModuleTransitioningStyle_Presenting)} serviceCompletionHandler:^(id  _Nullable resultData, NSError * _Nullable error, NSDictionary * _Nullable userInfo) {
         [self handleRequest:request];
     }];
     return NO;

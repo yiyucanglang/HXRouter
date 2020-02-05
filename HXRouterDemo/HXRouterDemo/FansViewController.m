@@ -10,7 +10,7 @@
 
 #import "HXRouteDemoServiceHeader.h"
 
-HXMacroReigisterService(FansViewController, URLString_ModuleFan)
+HXMacroReigisterService(FansViewController, URLString_ModuleFan, HXRouterNamespace_RouterDemo)
 
 @interface FansViewController ()
 
