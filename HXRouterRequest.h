@@ -28,6 +28,10 @@ typedef void(^HXServiceCompletionHandler)(id _Nullable resultData, NSError * _Nu
 
 @property (nonatomic, copy, readonly) NSString  *hostAndPath;
 
+
+/// You can use this to store additional data in custom handler.
+@property (nonatomic, strong) NSDictionary *userInfo;
+
 - (instancetype)initWithURLString:(NSString *)URLString
                 parseredURLString:(NSString *)parseredURLString
                     URLComponents:(NSURLComponents * _Nullable)URLComponents
