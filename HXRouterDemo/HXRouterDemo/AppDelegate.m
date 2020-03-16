@@ -7,16 +7,16 @@
 //
 
 #import "AppDelegate.h"
-
+#import "TimerManager.h"
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    [TimerManager sharedManager].end = CACurrentMediaTime();
+    [[TimerManager sharedManager] showDuration];
     return YES;
 }
 

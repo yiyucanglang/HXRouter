@@ -18,8 +18,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self testRouterRegistTime];
 }
+
+- (void)testRouterRegistTime {
+    NSTimeInterval begin, end;
+            
+    begin = CACurrentMediaTime();
+
+    for (NSInteger i = 0; i < 1000; i++) {
+        [[HXRouter sharedManager] registerService:[UIViewController class] URLString:[NSString stringWithFormat:@"parent://paper/index/%@", @(i)] serverNamespace:HXRouterNamespace_RouterDemo];
+    }
+    
+    for (NSInteger i = 0; i < 1000; i++) {
+        [[HXRouter sharedManager] registerService:[UIViewController class] URLString:[NSString stringWithFormat:@"parent://course/submodule/%@", @(i)] serverNamespace:HXRouterNamespace_RouterDemo];
+    }
+    
+    end = CACurrentMediaTime();
+    printf("regist time:  %.2f ms\n", (end - begin) * 1000);
+}
+
+
 
 - (IBAction)openModuleA:(UIButton *)sender {
     [[HXRouter sharedManager] handleURLString:URLString_ModuleA serverNamespace:HXRouterNamespace_RouterDemo nativeParameters:@{ModuleA_StudentIDKey : @(22), ModuleA_StudentNameKey : @"张三"}];
