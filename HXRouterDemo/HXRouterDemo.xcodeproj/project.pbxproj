@@ -3,23 +3,23 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		08207942EB416809FB7224D3 /* libPods-HXRouterDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF5497DE95A5B1440E6E393F /* libPods-HXRouterDemo.a */; };
-		5578C66E241FE52500012C8F /* RegisterTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 5578C66D241FE52500012C8F /* RegisterTime.m */; };
 		5578C671241FE8EA00012C8F /* TimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5578C670241FE8EA00012C8F /* TimerManager.m */; };
 		5578C674241FEB7600012C8F /* HXSubRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5578C673241FEB7600012C8F /* HXSubRouter.m */; };
-		5578C677241FED8300012C8F /* RegisterTimeTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5578C676241FED8300012C8F /* RegisterTimeTwo.m */; };
-		5578C67A241FED9A00012C8F /* RegisterTimerThree.m in Sources */ = {isa = PBXBuildFile; fileRef = 5578C679241FED9A00012C8F /* RegisterTimerThree.m */; };
-		5578C67D241FEDB000012C8F /* RegisterTimerFour.m in Sources */ = {isa = PBXBuildFile; fileRef = 5578C67C241FEDB000012C8F /* RegisterTimerFour.m */; };
-		5578C680241FEDC300012C8F /* RegisterTimerFive.m in Sources */ = {isa = PBXBuildFile; fileRef = 5578C67F241FEDC300012C8F /* RegisterTimerFive.m */; };
-		5578C683241FEDD300012C8F /* RegisterTimerSix.m in Sources */ = {isa = PBXBuildFile; fileRef = 5578C682241FEDD300012C8F /* RegisterTimerSix.m */; };
-		5578C686241FEDE800012C8F /* RegisterTimerSeven.m in Sources */ = {isa = PBXBuildFile; fileRef = 5578C685241FEDE800012C8F /* RegisterTimerSeven.m */; };
-		5578C689241FEE0C00012C8F /* RegisterTimerEight.m in Sources */ = {isa = PBXBuildFile; fileRef = 5578C688241FEE0C00012C8F /* RegisterTimerEight.m */; };
-		5578C68C241FEE2300012C8F /* RegisterTimerNine.m in Sources */ = {isa = PBXBuildFile; fileRef = 5578C68B241FEE2300012C8F /* RegisterTimerNine.m */; };
-		5578C68F241FEE3700012C8F /* RegisterTimerTen.m in Sources */ = {isa = PBXBuildFile; fileRef = 5578C68E241FEE3700012C8F /* RegisterTimerTen.m */; };
+		5578C6A42420550E00012C8F /* RegisterTimerThree.m in Sources */ = {isa = PBXBuildFile; fileRef = 5578C6912420550B00012C8F /* RegisterTimerThree.m */; };
+		5578C6A52420550E00012C8F /* RegisterTimerNine.m in Sources */ = {isa = PBXBuildFile; fileRef = 5578C6932420550C00012C8F /* RegisterTimerNine.m */; };
+		5578C6A62420550E00012C8F /* RegisterTimerEight.m in Sources */ = {isa = PBXBuildFile; fileRef = 5578C6942420550C00012C8F /* RegisterTimerEight.m */; };
+		5578C6A72420550E00012C8F /* RegisterTimerSix.m in Sources */ = {isa = PBXBuildFile; fileRef = 5578C6952420550C00012C8F /* RegisterTimerSix.m */; };
+		5578C6A82420550E00012C8F /* RegisterTimerFive.m in Sources */ = {isa = PBXBuildFile; fileRef = 5578C6962420550C00012C8F /* RegisterTimerFive.m */; };
+		5578C6A92420550F00012C8F /* RegisterTimerTen.m in Sources */ = {isa = PBXBuildFile; fileRef = 5578C6972420550C00012C8F /* RegisterTimerTen.m */; };
+		5578C6AA2420550F00012C8F /* RegisterTimeTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5578C69C2420550D00012C8F /* RegisterTimeTwo.m */; };
+		5578C6AB2420550F00012C8F /* RegisterTimerSeven.m in Sources */ = {isa = PBXBuildFile; fileRef = 5578C69D2420550D00012C8F /* RegisterTimerSeven.m */; };
+		5578C6AC2420550F00012C8F /* RegisterTimerFour.m in Sources */ = {isa = PBXBuildFile; fileRef = 5578C6A02420550E00012C8F /* RegisterTimerFour.m */; };
+		5578C6AD2420550F00012C8F /* RegisterTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 5578C6A32420550E00012C8F /* RegisterTime.m */; };
 		55BD82AA23EB26BE00475EEE /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BD82A923EB26BE00475EEE /* WebViewController.m */; };
 		E9A9D1DB23D7E9A0007F385F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A9D1DA23D7E9A0007F385F /* AppDelegate.m */; };
 		E9A9D1E123D7E9A0007F385F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A9D1E023D7E9A0007F385F /* ViewController.m */; };
@@ -59,30 +59,30 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5578C66C241FE52500012C8F /* RegisterTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterTime.h; sourceTree = "<group>"; };
-		5578C66D241FE52500012C8F /* RegisterTime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterTime.m; sourceTree = "<group>"; };
 		5578C66F241FE8EA00012C8F /* TimerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimerManager.h; sourceTree = "<group>"; };
 		5578C670241FE8EA00012C8F /* TimerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimerManager.m; sourceTree = "<group>"; };
 		5578C672241FEB7600012C8F /* HXSubRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HXSubRouter.h; sourceTree = "<group>"; };
 		5578C673241FEB7600012C8F /* HXSubRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXSubRouter.m; sourceTree = "<group>"; };
-		5578C675241FED8300012C8F /* RegisterTimeTwo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterTimeTwo.h; sourceTree = "<group>"; };
-		5578C676241FED8300012C8F /* RegisterTimeTwo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterTimeTwo.m; sourceTree = "<group>"; };
-		5578C678241FED9A00012C8F /* RegisterTimerThree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterTimerThree.h; sourceTree = "<group>"; };
-		5578C679241FED9A00012C8F /* RegisterTimerThree.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterTimerThree.m; sourceTree = "<group>"; };
-		5578C67B241FEDB000012C8F /* RegisterTimerFour.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterTimerFour.h; sourceTree = "<group>"; };
-		5578C67C241FEDB000012C8F /* RegisterTimerFour.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterTimerFour.m; sourceTree = "<group>"; };
-		5578C67E241FEDC300012C8F /* RegisterTimerFive.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterTimerFive.h; sourceTree = "<group>"; };
-		5578C67F241FEDC300012C8F /* RegisterTimerFive.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterTimerFive.m; sourceTree = "<group>"; };
-		5578C681241FEDD300012C8F /* RegisterTimerSix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterTimerSix.h; sourceTree = "<group>"; };
-		5578C682241FEDD300012C8F /* RegisterTimerSix.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterTimerSix.m; sourceTree = "<group>"; };
-		5578C684241FEDE800012C8F /* RegisterTimerSeven.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterTimerSeven.h; sourceTree = "<group>"; };
-		5578C685241FEDE800012C8F /* RegisterTimerSeven.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterTimerSeven.m; sourceTree = "<group>"; };
-		5578C687241FEE0C00012C8F /* RegisterTimerEight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterTimerEight.h; sourceTree = "<group>"; };
-		5578C688241FEE0C00012C8F /* RegisterTimerEight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterTimerEight.m; sourceTree = "<group>"; };
-		5578C68A241FEE2300012C8F /* RegisterTimerNine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterTimerNine.h; sourceTree = "<group>"; };
-		5578C68B241FEE2300012C8F /* RegisterTimerNine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterTimerNine.m; sourceTree = "<group>"; };
-		5578C68D241FEE3700012C8F /* RegisterTimerTen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterTimerTen.h; sourceTree = "<group>"; };
-		5578C68E241FEE3700012C8F /* RegisterTimerTen.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterTimerTen.m; sourceTree = "<group>"; };
+		5578C6902420550B00012C8F /* RegisterTimerFour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterTimerFour.h; sourceTree = "<group>"; };
+		5578C6912420550B00012C8F /* RegisterTimerThree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterTimerThree.m; sourceTree = "<group>"; };
+		5578C6922420550B00012C8F /* RegisterTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterTime.h; sourceTree = "<group>"; };
+		5578C6932420550C00012C8F /* RegisterTimerNine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterTimerNine.m; sourceTree = "<group>"; };
+		5578C6942420550C00012C8F /* RegisterTimerEight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterTimerEight.m; sourceTree = "<group>"; };
+		5578C6952420550C00012C8F /* RegisterTimerSix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterTimerSix.m; sourceTree = "<group>"; };
+		5578C6962420550C00012C8F /* RegisterTimerFive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterTimerFive.m; sourceTree = "<group>"; };
+		5578C6972420550C00012C8F /* RegisterTimerTen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterTimerTen.m; sourceTree = "<group>"; };
+		5578C6982420550C00012C8F /* RegisterTimerSix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterTimerSix.h; sourceTree = "<group>"; };
+		5578C6992420550C00012C8F /* RegisterTimerSeven.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterTimerSeven.h; sourceTree = "<group>"; };
+		5578C69A2420550D00012C8F /* RegisterTimeTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterTimeTwo.h; sourceTree = "<group>"; };
+		5578C69B2420550D00012C8F /* RegisterTimerThree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterTimerThree.h; sourceTree = "<group>"; };
+		5578C69C2420550D00012C8F /* RegisterTimeTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterTimeTwo.m; sourceTree = "<group>"; };
+		5578C69D2420550D00012C8F /* RegisterTimerSeven.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterTimerSeven.m; sourceTree = "<group>"; };
+		5578C69E2420550D00012C8F /* RegisterTimerEight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterTimerEight.h; sourceTree = "<group>"; };
+		5578C69F2420550E00012C8F /* RegisterTimerFive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterTimerFive.h; sourceTree = "<group>"; };
+		5578C6A02420550E00012C8F /* RegisterTimerFour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterTimerFour.m; sourceTree = "<group>"; };
+		5578C6A12420550E00012C8F /* RegisterTimerNine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterTimerNine.h; sourceTree = "<group>"; };
+		5578C6A22420550E00012C8F /* RegisterTimerTen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterTimerTen.h; sourceTree = "<group>"; };
+		5578C6A32420550E00012C8F /* RegisterTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterTime.m; sourceTree = "<group>"; };
 		55BD82A823EB26BE00475EEE /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		55BD82A923EB26BE00475EEE /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		AF5497DE95A5B1440E6E393F /* libPods-HXRouterDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HXRouterDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,26 +165,26 @@
 		5578C66B241FE4C000012C8F /* RegisterTimeTest */ = {
 			isa = PBXGroup;
 			children = (
-				5578C66C241FE52500012C8F /* RegisterTime.h */,
-				5578C66D241FE52500012C8F /* RegisterTime.m */,
-				5578C675241FED8300012C8F /* RegisterTimeTwo.h */,
-				5578C676241FED8300012C8F /* RegisterTimeTwo.m */,
-				5578C678241FED9A00012C8F /* RegisterTimerThree.h */,
-				5578C679241FED9A00012C8F /* RegisterTimerThree.m */,
-				5578C67B241FEDB000012C8F /* RegisterTimerFour.h */,
-				5578C67C241FEDB000012C8F /* RegisterTimerFour.m */,
-				5578C67E241FEDC300012C8F /* RegisterTimerFive.h */,
-				5578C67F241FEDC300012C8F /* RegisterTimerFive.m */,
-				5578C681241FEDD300012C8F /* RegisterTimerSix.h */,
-				5578C682241FEDD300012C8F /* RegisterTimerSix.m */,
-				5578C684241FEDE800012C8F /* RegisterTimerSeven.h */,
-				5578C685241FEDE800012C8F /* RegisterTimerSeven.m */,
-				5578C687241FEE0C00012C8F /* RegisterTimerEight.h */,
-				5578C688241FEE0C00012C8F /* RegisterTimerEight.m */,
-				5578C68A241FEE2300012C8F /* RegisterTimerNine.h */,
-				5578C68B241FEE2300012C8F /* RegisterTimerNine.m */,
-				5578C68D241FEE3700012C8F /* RegisterTimerTen.h */,
-				5578C68E241FEE3700012C8F /* RegisterTimerTen.m */,
+				5578C6922420550B00012C8F /* RegisterTime.h */,
+				5578C6A32420550E00012C8F /* RegisterTime.m */,
+				5578C69E2420550D00012C8F /* RegisterTimerEight.h */,
+				5578C6942420550C00012C8F /* RegisterTimerEight.m */,
+				5578C69F2420550E00012C8F /* RegisterTimerFive.h */,
+				5578C6962420550C00012C8F /* RegisterTimerFive.m */,
+				5578C6902420550B00012C8F /* RegisterTimerFour.h */,
+				5578C6A02420550E00012C8F /* RegisterTimerFour.m */,
+				5578C6A12420550E00012C8F /* RegisterTimerNine.h */,
+				5578C6932420550C00012C8F /* RegisterTimerNine.m */,
+				5578C6992420550C00012C8F /* RegisterTimerSeven.h */,
+				5578C69D2420550D00012C8F /* RegisterTimerSeven.m */,
+				5578C6982420550C00012C8F /* RegisterTimerSix.h */,
+				5578C6952420550C00012C8F /* RegisterTimerSix.m */,
+				5578C6A22420550E00012C8F /* RegisterTimerTen.h */,
+				5578C6972420550C00012C8F /* RegisterTimerTen.m */,
+				5578C69B2420550D00012C8F /* RegisterTimerThree.h */,
+				5578C6912420550B00012C8F /* RegisterTimerThree.m */,
+				5578C69A2420550D00012C8F /* RegisterTimeTwo.h */,
+				5578C69C2420550D00012C8F /* RegisterTimeTwo.m */,
 				5578C66F241FE8EA00012C8F /* TimerManager.h */,
 				5578C670241FE8EA00012C8F /* TimerManager.m */,
 				5578C672241FEB7600012C8F /* HXSubRouter.h */,
@@ -292,6 +292,7 @@
 				E9A9D1D223D7E9A0007F385F /* Sources */,
 				E9A9D1D323D7E9A0007F385F /* Frameworks */,
 				E9A9D1D423D7E9A0007F385F /* Resources */,
+				FF5A641F40F443935B596C5B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -430,6 +431,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FF5A641F40F443935B596C5B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HXRouterDemo/Pods-HXRouterDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HXRouterDemo/Pods-HXRouterDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HXRouterDemo/Pods-HXRouterDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -438,31 +456,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9A9D21323D7F01B007F385F /* ModuleBViewController.m in Sources */,
+				5578C6AC2420550F00012C8F /* RegisterTimerFour.m in Sources */,
+				5578C6A42420550E00012C8F /* RegisterTimerThree.m in Sources */,
 				55BD82AA23EB26BE00475EEE /* WebViewController.m in Sources */,
 				E9A9D21023D7F010007F385F /* ModuleAViewController.m in Sources */,
+				5578C6A92420550F00012C8F /* RegisterTimerTen.m in Sources */,
+				5578C6A82420550E00012C8F /* RegisterTimerFive.m in Sources */,
 				E9A9D22323D7F5D1007F385F /* RouterModuleBHandler.m in Sources */,
-				5578C680241FEDC300012C8F /* RegisterTimerFive.m in Sources */,
 				E9A9D1E123D7E9A0007F385F /* ViewController.m in Sources */,
-				5578C689241FEE0C00012C8F /* RegisterTimerEight.m in Sources */,
 				5578C671241FE8EA00012C8F /* TimerManager.m in Sources */,
-				5578C686241FEDE800012C8F /* RegisterTimerSeven.m in Sources */,
-				5578C677241FED8300012C8F /* RegisterTimeTwo.m in Sources */,
 				E9A9D21623D7F02E007F385F /* LoginViewViewController.m in Sources */,
 				E9A9D21923D7F046007F385F /* MenuViewController.m in Sources */,
 				5578C674241FEB7600012C8F /* HXSubRouter.m in Sources */,
+				5578C6A62420550E00012C8F /* RegisterTimerEight.m in Sources */,
+				5578C6A52420550E00012C8F /* RegisterTimerNine.m in Sources */,
+				5578C6AD2420550F00012C8F /* RegisterTime.m in Sources */,
+				5578C6AB2420550F00012C8F /* RegisterTimerSeven.m in Sources */,
 				E9A9D21F23D7F073007F385F /* FansViewController.m in Sources */,
 				E9A9D1DB23D7E9A0007F385F /* AppDelegate.m in Sources */,
 				E9A9D22923D7F64D007F385F /* PaperDetailViewController.m in Sources */,
+				5578C6A72420550E00012C8F /* RegisterTimerSix.m in Sources */,
 				E9A9D1EC23D7E9A6007F385F /* main.m in Sources */,
-				5578C67A241FED9A00012C8F /* RegisterTimerThree.m in Sources */,
 				E9A9D22623D7F60B007F385F /* PaperListViewController.m in Sources */,
-				5578C68C241FEE2300012C8F /* RegisterTimerNine.m in Sources */,
-				5578C683241FEDD300012C8F /* RegisterTimerSix.m in Sources */,
-				5578C67D241FEDB000012C8F /* RegisterTimerFour.m in Sources */,
-				5578C68F241FEE3700012C8F /* RegisterTimerTen.m in Sources */,
+				5578C6AA2420550F00012C8F /* RegisterTimeTwo.m in Sources */,
 				E9A9D21C23D7F05B007F385F /* FavouriteViewController.m in Sources */,
 				E9A9D22C23D7F80A007F385F /* HXPaperHandler.m in Sources */,
-				5578C66E241FE52500012C8F /* RegisterTime.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

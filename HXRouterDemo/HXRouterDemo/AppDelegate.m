@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "TimerManager.h"
+#import <TTLoadTime/TTLoadTime.h>
 @interface AppDelegate ()
 
 @end
@@ -17,6 +18,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [TimerManager sharedManager].end = CACurrentMediaTime();
     [[TimerManager sharedManager] showDuration];
+    printLoadCostsInfo();
     return YES;
 }
 

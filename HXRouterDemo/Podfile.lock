@@ -1,31 +1,35 @@
 PODS:
-  - DHXRouter (1.0.0)
+  - DHXRouter (1.0.1)
   - HXConvenientListView/Core (1.0.5):
     - Masonry
   - HXUIKits/HXSegmentView (0.0.7):
     - HXConvenientListView/Core
   - Masonry (1.1.0)
+  - TTAnalyzeLoadTime (1.0.5)
 
 DEPENDENCIES:
   - DHXRouter (from `../`)
   - HXUIKits/HXSegmentView
+  - TTAnalyzeLoadTime (~> 1.0)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - HXConvenientListView
     - HXUIKits
     - Masonry
+    - TTAnalyzeLoadTime
 
 EXTERNAL SOURCES:
   DHXRouter:
     :path: "../"
 
 SPEC CHECKSUMS:
-  DHXRouter: efadd661941e74b258ee20dbf06ec5175bd39360
+  DHXRouter: be9c76f5d2d8aaabe140ff34464338b3c5f27b4d
   HXConvenientListView: e3fe7f28f5fab78fcd37c000320e1105c0cbcf9f
   HXUIKits: edf53472bbafa510b05d4ca8858fe692905ed01d
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  TTAnalyzeLoadTime: d22374b69fbf1e792c9be07482a63a7150c23f5c
 
-PODFILE CHECKSUM: 1bba05ab73b59d71665e79f2f3c551262279b79e
+PODFILE CHECKSUM: 02bfe9ca7ab6ac0b2c4fede905159300aa746c36
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.1
