@@ -42,6 +42,8 @@ typedef void(^HXRouterSearchCompletion)(NSError * _Nullable error, NSDictionary 
 
 /// Provides routing service registration and invocation
 @interface HXRouter : NSObject
+@property (nonatomic, assign) NSInteger        testOfPreRegisterServiceNum;
+@property (nonatomic, assign) NSTimeInterval   testOfPreRegisterDuration;
 
 + (instancetype)sharedManager;
 

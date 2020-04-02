@@ -11,6 +11,8 @@
 
 #import "HXRouter.h"
 
+#import "CommunityModuleHeader.h"
+
 static NSString *HXRouterNamespace_RouterDemo= @"routerdemo";
 
 #pragma mark -ModuleA

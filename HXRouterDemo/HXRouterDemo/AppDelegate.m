@@ -8,8 +8,8 @@
 
 #import "AppDelegate.h"
 #import "TimerManager.h"
-#import <TTLoadTime/TTLoadTime.h>
-@interface AppDelegate ()
+#import "HXRouteDemoServiceHeader.h"
+@interface AppDelegate ()<HXRouterDelegate>
 
 @end
 
@@ -17,9 +17,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [TimerManager sharedManager].end = CACurrentMediaTime();
+    NSLog(@"预注册服务数量:%@\n", @([HXRouter sharedManager].testOfPreRegisterServiceNum));
+    //因为使用分类load注册，实际耗时会比下面数据大
+    NSLog(@"预注册服务耗时:%.2f ms\n", [HXRouter sharedManager].testOfPreRegisterDuration * 1000);
     [[TimerManager sharedManager] showDuration];
-    printLoadCostsInfo();
+    
+    [[HXRouter sharedManager] setRouterDelegate:self serverNamespace:HXRouterNamespace_RouterDemo];
     return YES;
+}
+
+- (NSString *)parserURLString:(NSString *)URLString {
+    if ([URLString isEqualToString:URLString_PaperList]) {
+        return URLString_ModuleA;
+    }
+    return URLString;
 }
 
 @end
