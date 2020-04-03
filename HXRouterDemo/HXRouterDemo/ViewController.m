@@ -70,6 +70,6 @@
 }
 
 - (IBAction)openServiceRedirection:(id)sender {
-    [[HXRouter sharedManager] handleURLString:URLString_PaperList serverNamespace:HXRouterNamespace_Community];
+    [[HXRouter sharedManager] handleURLString:URLString_PaperList serverNamespace:HXRouterNamespace_RouterDemo];
 }
 @end
