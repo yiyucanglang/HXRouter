@@ -1,9 +1,12 @@
 source 'https://github.com/CocoaPods/Specs.git'
+#use_frameworks!
 platform:ios, '8.0'
 target 'HXRouterDemo' do
 pod 'DHXRouter', :path => '../'
 pod 'HXUIKits/HXSegmentView'
-pod 'TTAnalyzeLoadTime', '~> 1.0'
+pod 'TestCommunity', :path => './Community'
+
+#pod 'TTAnalyzeLoadTime', '~> 1.0'
 end
 
 

@@ -18,7 +18,8 @@
     return manager;
 }
 
-- (void)showDuration {
-    printf("regist duration time:  %.2f ms\n", (self.end - self.begin) * 1000);
+- (void)showGlobalLoadDuration {
+    //可以将RegisterTimeTest文件下的服务测试文件移除，看看耗时变化。
+    printf("app load耗时粗略计算:  %.2f ms\n", (self.end - self.begin) * 1000);
 }
 @end

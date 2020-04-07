@@ -10,6 +10,9 @@
 #define HXRouteDemoServiceHeader_h
 
 #import "HXRouter.h"
+#import "TimerManager.h"
+
+#import "CommunityModuleHeader.h"
 
 static NSString *HXRouterNamespace_RouterDemo= @"routerdemo";
 

@@ -27,15 +27,15 @@
     begin = CACurrentMediaTime();
 
     for (NSInteger i = 0; i < 1000; i++) {
-        [[HXRouter sharedManager] registerService:[UIViewController class] URLString:[NSString stringWithFormat:@"parent://paper/index/%@", @(i)] serverNamespace:HXRouterNamespace_RouterDemo];
+        [[HXRouter sharedManager] registerService:[UIViewController class] URLString:[NSString stringWithFormat:@"parent://paper%@/index", @(i)] serverNamespace:HXRouterNamespace_RouterDemo];
     }
     
     for (NSInteger i = 0; i < 1000; i++) {
-        [[HXRouter sharedManager] registerService:[UIViewController class] URLString:[NSString stringWithFormat:@"parent://course/submodule/%@", @(i)] serverNamespace:HXRouterNamespace_RouterDemo];
+        [[HXRouter sharedManager] registerService:[UIViewController class] URLString:[NSString stringWithFormat:@"parent://course%@/submodule", @(i)] serverNamespace:HXRouterNamespace_RouterDemo];
     }
     
     end = CACurrentMediaTime();
-    printf("regist time:  %.2f ms\n", (end - begin) * 1000);
+    printf("连续注册两千服务耗时:  %.2f ms\n", (end - begin) * 1000);
 }
 
 
@@ -64,5 +64,12 @@
 }
 - (IBAction)openSina:(id)sender {
     [[HXRouter sharedManager] handleURLString:@"https://www.sina.com.cn" serverNamespace:HXRouterNamespace_RouterDemo];
+}
+- (IBAction)openCommunityHome:(id)sender {
+    [[HXRouter sharedManager] handleURLString:URLString_Community_Home serverNamespace:HXRouterNamespace_Community];
+}
+
+- (IBAction)openServiceRedirection:(id)sender {
+    [[HXRouter sharedManager] handleURLString:URLString_PaperList serverNamespace:HXRouterNamespace_RouterDemo];
 }
 @end
