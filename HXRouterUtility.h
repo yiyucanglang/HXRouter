@@ -13,12 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 #define HXMacroReigisterService(ServiceClass, ServiceURLString, NamespaceForService) \
 @implementation HXRouter (ServiceClass##ServiceURLString##NamespaceForService) \
 + (void)load { \
-    NSTimeInterval begin, end; \
-    begin = CACurrentMediaTime(); \
     [[HXRouter sharedManager] registerService:[ServiceClass class] URLString:ServiceURLString serverNamespace:NamespaceForService]; \
-    end = CACurrentMediaTime(); \
-    [HXRouter sharedManager].testOfPreRegisterServiceNum += 1; \
-    [HXRouter sharedManager].testOfPreRegisterDuration += end - begin; \
 }\
 \
 @end \

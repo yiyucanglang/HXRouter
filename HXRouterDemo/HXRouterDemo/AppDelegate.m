@@ -17,10 +17,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [TimerManager sharedManager].end = CACurrentMediaTime();
-    NSLog(@"预注册服务数量:%@\n", @([HXRouter sharedManager].testOfPreRegisterServiceNum));
+    NSLog(@"预注册服务数量:%@\n", @([TimerManager sharedManager].testOfPreRegisterServiceNum));
     //因为使用分类load注册，实际耗时会比下面数据大
-    NSLog(@"预注册服务耗时:%.2f ms\n", [HXRouter sharedManager].testOfPreRegisterDuration * 1000);
-    [[TimerManager sharedManager] showDuration];
+    NSLog(@"预注册服务耗时:%.2f ms\n", [TimerManager sharedManager].testOfPreRegisterDuration * 1000);
+    [[TimerManager sharedManager] showGlobalLoadDuration];
     
     [[HXRouter sharedManager] setRouterDelegate:self serverNamespace:HXRouterNamespace_RouterDemo];
     return YES;

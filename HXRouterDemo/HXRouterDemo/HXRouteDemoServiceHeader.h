@@ -10,6 +10,7 @@
 #define HXRouteDemoServiceHeader_h
 
 #import "HXRouter.h"
+#import "TimerManager.h"
 
 #import "CommunityModuleHeader.h"
 

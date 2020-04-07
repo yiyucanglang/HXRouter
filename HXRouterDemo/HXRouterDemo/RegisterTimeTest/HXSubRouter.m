@@ -10,10 +10,6 @@
 #import "TimerManager.h"
 @implementation HXSubRouter
 + (void)load {
-    NSTimeInterval beging, end;
-    beging = CACurrentMediaTime();
-    end = CACurrentMediaTime();
-    [HXRouter sharedManager].testOfPreRegisterDuration += end - beging;
     [TimerManager sharedManager].begin = CACurrentMediaTime();
 }
 @end
