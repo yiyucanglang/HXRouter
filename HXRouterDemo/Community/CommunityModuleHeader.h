@@ -9,7 +9,7 @@
 #ifndef CommunityModuleHeader_h
 #define CommunityModuleHeader_h
 
-#import "HXRouter.h"
+#import "DHXRouter.h"
 
 static NSString *HXRouterNamespace_Community = @"communitynamespace";
 

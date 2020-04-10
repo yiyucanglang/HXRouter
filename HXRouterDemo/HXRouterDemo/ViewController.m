@@ -19,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self testRouterRegistTime];
+    [HXRegistrationsLoader triggerRegistrationsAt:HXHomeFinish];
 }
 
 - (void)testRouterRegistTime {
@@ -28,10 +29,12 @@
 
     for (NSInteger i = 0; i < 1000; i++) {
         [[HXRouter sharedManager] registerService:[UIViewController class] URLString:[NSString stringWithFormat:@"parent://paper%@/index", @(i)] serverNamespace:HXRouterNamespace_RouterDemo];
+        
+//        [[HXRouter sharedManager] registerService:[UIViewController class] URLString:@"1" serverNamespace:HXRouterNamespace_RouterDemo];
     }
     
     for (NSInteger i = 0; i < 1000; i++) {
-        [[HXRouter sharedManager] registerService:[UIViewController class] URLString:[NSString stringWithFormat:@"parent://course%@/submodule", @(i)] serverNamespace:HXRouterNamespace_RouterDemo];
+        [[HXRouter sharedManager] registerService:[UIViewController class] URLString:[NSString stringWithFormat:@"parent://module%@/index", @(i)] serverNamespace:HXRouterNamespace_RouterDemo];
     }
     
     end = CACurrentMediaTime();

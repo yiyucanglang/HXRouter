@@ -9,7 +9,7 @@
 #ifndef HXRouteDemoServiceHeader_h
 #define HXRouteDemoServiceHeader_h
 
-#import "HXRouter.h"
+#import "DHXRouter.h"
 #import "TimerManager.h"
 
 #import "CommunityModuleHeader.h"

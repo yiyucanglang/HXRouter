@@ -23,4 +23,15 @@ HXMacroReigisterService(CommunityHomeViewController, URLString_Community_Home, H
     self.view.backgroundColor = [UIColor yellowColor];
 }
 
+HXExecuteRegistrationAt(HXLaunchFinish,
+^{
+    NSLog(@"12123311223");
+})
+
+HXExecuteRegistrationAt(HXHomeFinish,
+^{
+    NSLog(@"sdsdasdasdasdas");
+})
+
+
 @end

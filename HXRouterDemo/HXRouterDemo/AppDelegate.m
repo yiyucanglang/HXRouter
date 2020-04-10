@@ -23,6 +23,8 @@
     [[TimerManager sharedManager] showGlobalLoadDuration];
     
     [[HXRouter sharedManager] setRouterDelegate:self serverNamespace:HXRouterNamespace_RouterDemo];
+    
+    [HXRegistrationsLoader triggerRegistrationsAt:HXLaunchFinish];
     return YES;
 }
 

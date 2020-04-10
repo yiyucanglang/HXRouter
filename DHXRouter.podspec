@@ -14,4 +14,9 @@ Pod::Spec.new do |s|
 
   s.public_header_files = '*{h}'
   s.source_files = '*.{h,m}'
+  
+  s.subspec 'HXRegistrationsLoader' do |ss|
+    ss.public_header_files = 'HXRegistrationsLoader/*{h}'
+    ss.source_files = 'HXRegistrationsLoader/*.{h,m}'
+  end
  end

@@ -10,4 +10,8 @@
 
 #import "HXRouter.h"
 
+#if __has_include("HXRegistrationsLoader.h")
+#import "HXRegistrationsLoader.h"
+#endif
+
 #endif /* DHXRouter_h */

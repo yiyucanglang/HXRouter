@@ -39,6 +39,16 @@
 		E9AB6C882435C14100721D5A /* RegisterTimerSeven.m in Sources */ = {isa = PBXBuildFile; fileRef = E9AB6C7A2435C14000721D5A /* RegisterTimerSeven.m */; };
 		E9AB6C892435C14100721D5A /* RegisterTimeTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = E9AB6C7D2435C14100721D5A /* RegisterTimeTwo.m */; };
 		E9AB6C8A2435C14100721D5A /* RegisterTimerFive.m in Sources */ = {isa = PBXBuildFile; fileRef = E9AB6C7E2435C14100721D5A /* RegisterTimerFive.m */; };
+		E9EA8DE7244040530079A904 /* RegisterTimerOneOne.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EA8DE6244040530079A904 /* RegisterTimerOneOne.m */; };
+		E9EA8DEA244041740079A904 /* RegisterTimerOneTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EA8DE9244041740079A904 /* RegisterTimerOneTwo.m */; };
+		E9EA8DED244041E40079A904 /* RegisterTimerOneThree.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EA8DEC244041E40079A904 /* RegisterTimerOneThree.m */; };
+		E9EA8DF1244042CA0079A904 /* RegisterTimerOneFour.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EA8DF0244042CA0079A904 /* RegisterTimerOneFour.m */; };
+		E9EA8DF4244043070079A904 /* RegisterTimerOneFive.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EA8DF3244043070079A904 /* RegisterTimerOneFive.m */; };
+		E9EA8DF7244043370079A904 /* RegisterTimerOneSix.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EA8DF6244043370079A904 /* RegisterTimerOneSix.m */; };
+		E9EA8DFA2440436A0079A904 /* RegisterTimerOneSeven.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EA8DF92440436A0079A904 /* RegisterTimerOneSeven.m */; };
+		E9EA8DFD244043A90079A904 /* RegisterTimerOneEight.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EA8DFC244043A90079A904 /* RegisterTimerOneEight.m */; };
+		E9EA8E00244043D90079A904 /* RegisterTimerOneNine.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EA8DFF244043D90079A904 /* RegisterTimerOneNine.m */; };
+		E9EA8E032440440F0079A904 /* RegisterTimerTwoTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EA8E022440440F0079A904 /* RegisterTimerTwoTwo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +133,26 @@
 		E9AB6C7E2435C14100721D5A /* RegisterTimerFive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterTimerFive.m; sourceTree = "<group>"; };
 		E9AB6C7F2435C14100721D5A /* RegisterTimerSeven.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterTimerSeven.h; sourceTree = "<group>"; };
 		E9AB6C802435C14100721D5A /* RegisterTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterTime.h; sourceTree = "<group>"; };
+		E9EA8DE5244040530079A904 /* RegisterTimerOneOne.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterTimerOneOne.h; sourceTree = "<group>"; };
+		E9EA8DE6244040530079A904 /* RegisterTimerOneOne.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterTimerOneOne.m; sourceTree = "<group>"; };
+		E9EA8DE8244041740079A904 /* RegisterTimerOneTwo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterTimerOneTwo.h; sourceTree = "<group>"; };
+		E9EA8DE9244041740079A904 /* RegisterTimerOneTwo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterTimerOneTwo.m; sourceTree = "<group>"; };
+		E9EA8DEB244041E40079A904 /* RegisterTimerOneThree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterTimerOneThree.h; sourceTree = "<group>"; };
+		E9EA8DEC244041E40079A904 /* RegisterTimerOneThree.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterTimerOneThree.m; sourceTree = "<group>"; };
+		E9EA8DEF244042CA0079A904 /* RegisterTimerOneFour.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterTimerOneFour.h; sourceTree = "<group>"; };
+		E9EA8DF0244042CA0079A904 /* RegisterTimerOneFour.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterTimerOneFour.m; sourceTree = "<group>"; };
+		E9EA8DF2244043070079A904 /* RegisterTimerOneFive.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterTimerOneFive.h; sourceTree = "<group>"; };
+		E9EA8DF3244043070079A904 /* RegisterTimerOneFive.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterTimerOneFive.m; sourceTree = "<group>"; };
+		E9EA8DF5244043370079A904 /* RegisterTimerOneSix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterTimerOneSix.h; sourceTree = "<group>"; };
+		E9EA8DF6244043370079A904 /* RegisterTimerOneSix.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterTimerOneSix.m; sourceTree = "<group>"; };
+		E9EA8DF82440436A0079A904 /* RegisterTimerOneSeven.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterTimerOneSeven.h; sourceTree = "<group>"; };
+		E9EA8DF92440436A0079A904 /* RegisterTimerOneSeven.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterTimerOneSeven.m; sourceTree = "<group>"; };
+		E9EA8DFB244043A90079A904 /* RegisterTimerOneEight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterTimerOneEight.h; sourceTree = "<group>"; };
+		E9EA8DFC244043A90079A904 /* RegisterTimerOneEight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterTimerOneEight.m; sourceTree = "<group>"; };
+		E9EA8DFE244043D90079A904 /* RegisterTimerOneNine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterTimerOneNine.h; sourceTree = "<group>"; };
+		E9EA8DFF244043D90079A904 /* RegisterTimerOneNine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterTimerOneNine.m; sourceTree = "<group>"; };
+		E9EA8E012440440F0079A904 /* RegisterTimerTwoTwo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterTimerTwoTwo.h; sourceTree = "<group>"; };
+		E9EA8E022440440F0079A904 /* RegisterTimerTwoTwo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterTimerTwoTwo.m; sourceTree = "<group>"; };
 		EB09447B1A22EB29ED2D4F7A /* libPods-HXRouterDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HXRouterDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB1386458F4406EAE3A6CD0B /* Pods-HXRouterDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HXRouterDemo.debug.xcconfig"; path = "Target Support Files/Pods-HXRouterDemo/Pods-HXRouterDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -185,6 +215,26 @@
 				E9AB6C722435C13F00721D5A /* RegisterTimerThree.m */,
 				E9AB6C6D2435C13E00721D5A /* RegisterTimeTwo.h */,
 				E9AB6C7D2435C14100721D5A /* RegisterTimeTwo.m */,
+				E9EA8DE5244040530079A904 /* RegisterTimerOneOne.h */,
+				E9EA8DE6244040530079A904 /* RegisterTimerOneOne.m */,
+				E9EA8DE8244041740079A904 /* RegisterTimerOneTwo.h */,
+				E9EA8DE9244041740079A904 /* RegisterTimerOneTwo.m */,
+				E9EA8DEB244041E40079A904 /* RegisterTimerOneThree.h */,
+				E9EA8DEC244041E40079A904 /* RegisterTimerOneThree.m */,
+				E9EA8DEF244042CA0079A904 /* RegisterTimerOneFour.h */,
+				E9EA8DF0244042CA0079A904 /* RegisterTimerOneFour.m */,
+				E9EA8DF2244043070079A904 /* RegisterTimerOneFive.h */,
+				E9EA8DF3244043070079A904 /* RegisterTimerOneFive.m */,
+				E9EA8DF5244043370079A904 /* RegisterTimerOneSix.h */,
+				E9EA8DF6244043370079A904 /* RegisterTimerOneSix.m */,
+				E9EA8DF82440436A0079A904 /* RegisterTimerOneSeven.h */,
+				E9EA8DF92440436A0079A904 /* RegisterTimerOneSeven.m */,
+				E9EA8DFB244043A90079A904 /* RegisterTimerOneEight.h */,
+				E9EA8DFC244043A90079A904 /* RegisterTimerOneEight.m */,
+				E9EA8DFE244043D90079A904 /* RegisterTimerOneNine.h */,
+				E9EA8DFF244043D90079A904 /* RegisterTimerOneNine.m */,
+				E9EA8E012440440F0079A904 /* RegisterTimerTwoTwo.h */,
+				E9EA8E022440440F0079A904 /* RegisterTimerTwoTwo.m */,
 				5578C66F241FE8EA00012C8F /* TimerManager.h */,
 				5578C670241FE8EA00012C8F /* TimerManager.m */,
 				5578C672241FEB7600012C8F /* HXSubRouter.h */,
@@ -438,22 +488,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9A9D21323D7F01B007F385F /* ModuleBViewController.m in Sources */,
+				E9EA8DF4244043070079A904 /* RegisterTimerOneFive.m in Sources */,
 				55BD82AA23EB26BE00475EEE /* WebViewController.m in Sources */,
 				E9A9D21023D7F010007F385F /* ModuleAViewController.m in Sources */,
 				E9A9D22323D7F5D1007F385F /* RouterModuleBHandler.m in Sources */,
 				E9AB6C8A2435C14100721D5A /* RegisterTimerFive.m in Sources */,
 				E9A9D1E123D7E9A0007F385F /* ViewController.m in Sources */,
 				5578C671241FE8EA00012C8F /* TimerManager.m in Sources */,
+				E9EA8DE7244040530079A904 /* RegisterTimerOneOne.m in Sources */,
 				E9AB6C872435C14100721D5A /* RegisterTimerTen.m in Sources */,
 				E9A9D21623D7F02E007F385F /* LoginViewViewController.m in Sources */,
+				E9EA8E00244043D90079A904 /* RegisterTimerOneNine.m in Sources */,
+				E9EA8DFD244043A90079A904 /* RegisterTimerOneEight.m in Sources */,
 				E9A9D21923D7F046007F385F /* MenuViewController.m in Sources */,
+				E9EA8E032440440F0079A904 /* RegisterTimerTwoTwo.m in Sources */,
+				E9EA8DF7244043370079A904 /* RegisterTimerOneSix.m in Sources */,
 				5578C674241FEB7600012C8F /* HXSubRouter.m in Sources */,
 				E9A9D21F23D7F073007F385F /* FansViewController.m in Sources */,
+				E9EA8DF1244042CA0079A904 /* RegisterTimerOneFour.m in Sources */,
 				E9A9D1DB23D7E9A0007F385F /* AppDelegate.m in Sources */,
 				E9AB6C812435C14100721D5A /* RegisterTime.m in Sources */,
 				E9A9D22923D7F64D007F385F /* PaperDetailViewController.m in Sources */,
 				E9AB6C882435C14100721D5A /* RegisterTimerSeven.m in Sources */,
 				E9AB6C892435C14100721D5A /* RegisterTimeTwo.m in Sources */,
+				E9EA8DEA244041740079A904 /* RegisterTimerOneTwo.m in Sources */,
 				E9A9D1EC23D7E9A6007F385F /* main.m in Sources */,
 				E9AB6C832435C14100721D5A /* RegisterTimerThree.m in Sources */,
 				E9A9D22623D7F60B007F385F /* PaperListViewController.m in Sources */,
@@ -461,6 +519,8 @@
 				E9AB6C862435C14100721D5A /* RegisterTimerSix.m in Sources */,
 				E9A9D21C23D7F05B007F385F /* FavouriteViewController.m in Sources */,
 				E9AB6C822435C14100721D5A /* RegisterTimerFour.m in Sources */,
+				E9EA8DED244041E40079A904 /* RegisterTimerOneThree.m in Sources */,
+				E9EA8DFA2440436A0079A904 /* RegisterTimerOneSeven.m in Sources */,
 				E9AB6C842435C14100721D5A /* RegisterTimerEight.m in Sources */,
 				E9A9D22C23D7F80A007F385F /* HXPaperHandler.m in Sources */,
 			);
